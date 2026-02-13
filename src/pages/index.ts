@@ -4,3 +4,4 @@ export { ConfirmationPage } from './ConfirmationPage';
 export { LoginPage } from './LoginPage';
 export { RegisterPage } from './RegisterPage';
 export { MyBookingsPage } from './MyBookingsPage';
+export { ForgotPasswordPage } from './ForgotPasswordPage';

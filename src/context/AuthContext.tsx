@@ -31,6 +31,7 @@ interface AuthContextType {
     fullName?: string
   ) => Promise<void>;
   signOut: () => Promise<void>;
+  resetPassword: (email: string) => Promise<void>;
   demoLogin: (asAdmin?: boolean) => void; // DEMO MODE
 }
 
@@ -140,6 +141,16 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     if (error) throw error;
   };
 
+  const resetPassword = async (email: string) => {
+    if (isDemoMode) {
+      throw new Error('Lösenordsåterställning är inte tillgänglig i demo-läge');
+    }
+    const { error } = await supabase.auth.resetPasswordForEmail(email, {
+      redirectTo: `${window.location.origin}/reset-password`,
+    });
+    if (error) throw error;
+  };
+
   // DEMO MODE - fake login function
   const demoLogin = (asAdmin = false) => {
     const demoProfile = asAdmin ? DEMO_ADMIN : DEMO_USER;
@@ -160,6 +171,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         signIn,
         signUp,
         signOut,
+        resetPassword,
         demoLogin, // DEMO MODE
       }}
     >

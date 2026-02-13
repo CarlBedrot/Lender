@@ -118,6 +118,13 @@ export function LoginPage() {
                   {isLoading ? 'Loggar in...' : 'Logga in'}
                 </Button>
               </form>
+
+              <Link
+                to="/forgot-password"
+                className="block text-center text-lender-text-secondary text-sm mt-4 hover:text-lender-accent transition-colors"
+              >
+                Glömt lösenordet?
+              </Link>
             </Card>
 
             <p className="text-center text-lender-text-secondary mt-6">

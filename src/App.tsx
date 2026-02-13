@@ -8,6 +8,7 @@ import {
   LoginPage,
   RegisterPage,
   MyBookingsPage,
+  ForgotPasswordPage,
 } from './pages';
 import { AdminDashboard } from './pages/admin';
 
@@ -17,6 +18,7 @@ function AppRoutes() {
       <Route path="/" element={<HomePage />} />
       <Route path="/login" element={<LoginPage />} />
       <Route path="/register" element={<RegisterPage />} />
+      <Route path="/forgot-password" element={<ForgotPasswordPage />} />
       <Route path="/book/:slotId" element={<BookingPage />} />
       <Route path="/confirmation/:bookingId" element={<ConfirmationPage />} />
       <Route path="/my-bookings" element={<MyBookingsPage />} />
