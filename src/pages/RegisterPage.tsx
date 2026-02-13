@@ -153,6 +153,17 @@ export function RegisterPage() {
           </Link>
         </p>
 
+        <p className="text-center text-lender-text-secondary text-xs mt-4">
+          Genom att registrera dig godkänner du våra{' '}
+          <Link to="/terms" className="text-lender-accent hover:underline">
+            användarvillkor
+          </Link>{' '}
+          och{' '}
+          <Link to="/privacy" className="text-lender-accent hover:underline">
+            integritetspolicy
+          </Link>
+        </p>
+
         <Link
           to="/"
           className="block text-center text-lender-text-secondary mt-4 hover:text-white transition-colors"
