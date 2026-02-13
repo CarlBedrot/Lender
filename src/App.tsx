@@ -1,0 +1,35 @@
+import { Routes, Route } from 'react-router-dom';
+import { AuthProvider } from './context/AuthContext';
+import {
+  HomePage,
+  BookingPage,
+  ConfirmationPage,
+  LoginPage,
+  RegisterPage,
+  MyBookingsPage,
+} from './pages';
+import { AdminDashboard } from './pages/admin';
+
+function AppRoutes() {
+  return (
+    <Routes>
+      <Route path="/" element={<HomePage />} />
+      <Route path="/login" element={<LoginPage />} />
+      <Route path="/register" element={<RegisterPage />} />
+      <Route path="/book/:slotId" element={<BookingPage />} />
+      <Route path="/confirmation/:bookingId" element={<ConfirmationPage />} />
+      <Route path="/my-bookings" element={<MyBookingsPage />} />
+      <Route path="/admin" element={<AdminDashboard />} />
+    </Routes>
+  );
+}
+
+function App() {
+  return (
+    <AuthProvider>
+      <AppRoutes />
+    </AuthProvider>
+  );
+}
+
+export default App;
