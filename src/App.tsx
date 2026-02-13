@@ -9,6 +9,7 @@ import {
   RegisterPage,
   MyBookingsPage,
   ForgotPasswordPage,
+  ProfilePage,
 } from './pages';
 import { AdminDashboard } from './pages/admin';
 
@@ -22,6 +23,7 @@ function AppRoutes() {
       <Route path="/book/:slotId" element={<BookingPage />} />
       <Route path="/confirmation/:bookingId" element={<ConfirmationPage />} />
       <Route path="/my-bookings" element={<MyBookingsPage />} />
+      <Route path="/profile" element={<ProfilePage />} />
       <Route path="/admin" element={<AdminDashboard />} />
     </Routes>
   );

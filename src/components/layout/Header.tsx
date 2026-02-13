@@ -34,6 +34,12 @@ export function Header() {
             >
               Mina bokningar
             </Link>
+            <Link
+              to="/profile"
+              className="text-sm text-lender-text-secondary hover:text-white transition-colors"
+            >
+              Profil
+            </Link>
             <button
               onClick={handleSignOut}
               className="text-sm text-lender-text-secondary hover:text-white transition-colors"

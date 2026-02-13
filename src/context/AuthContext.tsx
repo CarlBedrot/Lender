@@ -32,6 +32,7 @@ interface AuthContextType {
   ) => Promise<void>;
   signOut: () => Promise<void>;
   resetPassword: (email: string) => Promise<void>;
+  updateProfile: (data: { phone?: string; full_name?: string }) => Promise<void>;
   demoLogin: (asAdmin?: boolean) => void; // DEMO MODE
 }
 
@@ -151,6 +152,36 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     if (error) throw error;
   };
 
+  const updateProfile = async (data: { phone?: string; full_name?: string }) => {
+    if (!user) throw new Error('Måste vara inloggad');
+    
+    if (isDemoMode) {
+      // Update local demo profile
+      if (profile) {
+        setProfile({
+          ...profile,
+          phone: data.phone ?? profile.phone,
+          full_name: data.full_name ?? profile.full_name,
+        });
+      }
+      return;
+    }
+    
+    const { error } = await supabase
+      .from('profiles')
+      .update({
+        ...data,
+        updated_at: new Date().toISOString(),
+      })
+      .eq('id', user.id);
+    
+    if (error) throw error;
+    
+    // Refresh profile
+    const updatedProfile = await fetchProfile(user.id);
+    setProfile(updatedProfile);
+  };
+
   // DEMO MODE - fake login function
   const demoLogin = (asAdmin = false) => {
     const demoProfile = asAdmin ? DEMO_ADMIN : DEMO_USER;
@@ -172,6 +203,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         signUp,
         signOut,
         resetPassword,
+        updateProfile,
         demoLogin, // DEMO MODE
       }}
     >

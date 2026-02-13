@@ -5,3 +5,4 @@ export { LoginPage } from './LoginPage';
 export { RegisterPage } from './RegisterPage';
 export { MyBookingsPage } from './MyBookingsPage';
 export { ForgotPasswordPage } from './ForgotPasswordPage';
+export { ProfilePage } from './ProfilePage';
