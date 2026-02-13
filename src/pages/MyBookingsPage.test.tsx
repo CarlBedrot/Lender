@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-import { render, screen, waitFor } from '../test/test-utils';
+import { render, screen } from '../test/test-utils';
 import userEvent from '@testing-library/user-event';
 import { MyBookingsPage } from './MyBookingsPage';
 import type { BookingWithSlot } from '../lib/types';
@@ -198,7 +198,7 @@ describe('MyBookingsPage', () => {
 
   it('should show empty state when no bookings', () => {
     vi.mocked(useMyBookings).mockReturnValue({
-      data: [],
+      data: [] as BookingWithSlot[],
       isLoading: false,
     } as ReturnType<typeof useMyBookings>);
 

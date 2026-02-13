@@ -43,7 +43,6 @@ describe('AddSlotForm', () => {
 
   it('should have all duration options', () => {
     render(<AddSlotForm />);
-    const select = screen.getByLabelText(/längd/i);
 
     expect(screen.getByRole('option', { name: '4 timmar' })).toBeInTheDocument();
     expect(screen.getByRole('option', { name: '8 timmar' })).toBeInTheDocument();

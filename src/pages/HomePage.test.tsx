@@ -93,7 +93,7 @@ describe('HomePage', () => {
 
   it('should show empty state when no slots', () => {
     vi.mocked(useAvailableSlots).mockReturnValue({
-      data: [],
+      data: [] as typeof mockSlots,
       isLoading: false,
     } as ReturnType<typeof useAvailableSlots>);
 
@@ -114,7 +114,7 @@ describe('HomePage', () => {
 
   it('should display zero when no slots available', () => {
     vi.mocked(useAvailableSlots).mockReturnValue({
-      data: [],
+      data: [] as typeof mockSlots,
       isLoading: false,
     } as ReturnType<typeof useAvailableSlots>);
 

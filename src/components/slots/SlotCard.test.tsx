@@ -1,19 +1,8 @@
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { render, screen } from '../../test/test-utils';
 import userEvent from '@testing-library/user-event';
 import { SlotCard } from './SlotCard';
 import type { Slot } from '../../lib/types';
-
-const mockSlot: Slot = {
-  id: 'slot-1',
-  date: '2025-01-15',
-  start_time: '08:00:00',
-  duration: '8 timmar',
-  status: 'available',
-  notes: null,
-  created_at: '2025-01-01T00:00:00Z',
-  updated_at: '2025-01-01T00:00:00Z',
-};
 
 // Mock useNavigate
 const mockNavigate = vi.fn();
@@ -25,7 +14,16 @@ vi.mock('react-router-dom', async () => {
   };
 });
 
-import { vi } from 'vitest';
+const mockSlot: Slot = {
+  id: 'slot-1',
+  date: '2025-01-15',
+  start_time: '08:00:00',
+  duration: '8 timmar',
+  status: 'available',
+  notes: null,
+  created_at: '2025-01-01T00:00:00Z',
+  updated_at: '2025-01-01T00:00:00Z',
+};
 
 describe('SlotCard', () => {
   beforeEach(() => {
