@@ -42,8 +42,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [session, setSession] = useState<Session | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
-  // DEMO MODE - check if running without Supabase
-  const isDemoMode = !isSupabaseConfigured;
+  // DEMO MODE - only enabled when explicitly allowed via env var AND Supabase is not configured
+  const isDemoMode =
+    import.meta.env.VITE_ALLOW_DEMO_MODE === 'true' && !isSupabaseConfigured;
 
   const fetchProfile = async (userId: string) => {
     const { data, error } = await supabase
