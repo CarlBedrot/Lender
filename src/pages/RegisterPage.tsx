@@ -23,8 +23,8 @@ export function RegisterPage() {
     setError(null);
     setIsLoading(true);
 
-    if (password.length < 6) {
-      setError('Lösenordet måste vara minst 6 tecken');
+    if (password.length < 8) {
+      setError('Lösenordet måste vara minst 8 tecken');
       setIsLoading(false);
       return;
     }
@@ -131,7 +131,7 @@ export function RegisterPage() {
             <Input
               type="password"
               label="Lösenord"
-              placeholder="Minst 6 tecken"
+              placeholder="Minst 8 tecken"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
